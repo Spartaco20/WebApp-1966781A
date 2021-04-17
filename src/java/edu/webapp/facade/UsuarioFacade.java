@@ -29,6 +29,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         super(Usuario.class);
     }
     
+    @Override
     public Usuario recuperarClave (String correoIn) {
         try {
             Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.correo = :correoIn");
@@ -39,6 +40,7 @@ public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFac
         }
     }
     
+    @Override
     public Usuario loginUsuario(String correo, String clave) {
         try {
             Query q = em.createQuery("SELECT u FROM Usuario u WHERE u.correo = :correo AND u.clave = :clave");

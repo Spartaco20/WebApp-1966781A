@@ -2,39 +2,97 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:html5="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-    <ui:composition>
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
-                    <div class="col-sm-4">
-                        <div class="page-header float-left">
-                            <div class="page-title">
-                                <h1>${Panel}</h1>
+    <h:body>
+        <ui:composition>
+            
+            <div class="breadcrumbs">
+                <div class="breadcrumbs-inner">
+                    <div class="row m-0">
+                        <div class="col-sm-4">
+                            <div class="page-header float-left">
+                                <div class="page-title">
+                                    <h1>${panel}</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="page-header float-right">
-                            <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="#">Inicio Sesión</a></li>
-                                    <li class="active"><a href="#">${Panel}</a></li>
-                                </ol>
+                        <div class="col-sm-8">
+                            <div class="page-header float-right">
+                                <div class="page-title">
+                                    <ol class="breadcrumb text-right">
+                                        <li><a href="#">Inicio Sesión</a></li>
+                                        <li class="active"><a href="#">${panel}</a></li>
+                                    </ol>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="content">
-            <div class="animated fadeIn">
-                
+
+            <div class="content">
+                <div class="animated fadeIn">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Actualizar</strong>
+                            </div>
+                            <div class="card-body">
+                                <!-- Credit Card -->
+                                <div id="pay-invoice">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center">Mis datos</h3>
+                                        </div>
+                                        <hr/>
+                                        <h:form>
+                                            <div class="form-group">
+                                                <label for="tipoDocu" class="control-label mb-1">Tipo documento</label>
+                                                <input id="tipoDocu" disabled="true" name="tipoDocu" type="text" class="form-control" aria-required="true" aria-invalid="false" value="#{usuarioSession.usuLogin.tipoDocumento}"/>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="cc-docu" class="control-label mb-1">Número documento</label>
+                                                <input id="cc-docu" disabled="true" name="cc-docu" type="text" class="form-control" aria-required="true" aria-invalid="false" value="#{usuarioSession.usuLogin.documento}"/>
+                                            </div>
+                                            
+                                            <div class="form-group has-success">
+                                                <label for="regNombres" class="control-label mb-1">Nombres</label>
+                                                <h:inputText required="true" requiredMessage="Ingrese sus nombres" id="regNombres" class="form-control" value="#{usuarioSession.usuLogin.nombres}" />
+                                                <h:message style="color: red" for="regNombres"></h:message>
+                                            </div>
+                                            
+                                            <div class="form-group has-success">
+                                                <label for="regApellidos" class="control-label mb-1">Apellidos</label>
+                                                <h:inputText required="true" requiredMessage="Ingrese sus apellidos" id="regApellidos" class="form-control" value="#{usuarioSession.usuLogin.apellidos}" />
+                                                <h:message style="color: red" for="regApellidos"></h:message>
+                                            </div>
+                                            
+                                            <div class="form-group">
+                                                <label for="cc-correo" class="control-label mb-1">Dirección de correo electrónico</label>
+                                                <input id="cc-correo" disabled="true" name="cc-correo" type="text" class="form-control" aria-required="true" aria-invalid="false" value="#{usuarioSession.usuLogin.correo}"/>
+                                            </div>
+                                            
+                                            <div class="form-group has-success">
+                                                <label for="regClave" class="control-label mb-1">Clave</label>
+                                                <h:inputSecret required="true" requiredMessage="Ingrese una clave" id="regClave" class="form-control" value="#{usuarioSession.usuLogin.clave}" html5:placeholder="Clave"/>
+                                                <h:message style="color: red" for="regClave"></h:message>
+                                            </div>
+                                            
+                                            <div>
+                                                <h:commandButton class="btn btn-lg btn-info btn-block" value="Actualizar" action="#{usuarioSession.actualizarMisDatos()}"/>
+                                            </div>
+                                        </h:form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- .card -->
+                    </div><!--/.col-->
+                </div>
             </div>
-        </div>
-        
-    </ui:composition>
+
+        </ui:composition>
+    </h:body>
 </html>
 

@@ -68,7 +68,7 @@ public class UsuarioSession implements Serializable {
             FacesContext fc = FacesContext.getCurrentInstance();
             ExternalContext ext = FacesContext.getCurrentInstance().getExternalContext();
             ((HttpSession) ext.getSession(false)).invalidate();
-            fc.getExternalContext().redirect("/index.xhtml");
+            fc.getExternalContext().redirect("../index.xhtml");
         } catch (Exception e) {
             System.out.println("Error cerrando sesion UsuarioSession:cerrarSesion " + e.getMessage());
         }
